@@ -1,0 +1,25 @@
+server:
+    port: 8080
+
+spring:
+    jpa:        
+        hibernate:       
+            jdbc:
+                time_zone: Asia/Seoul     
+            ddl-auto: create
+            naming: 
+                implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+            show_sql: true    
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQLDialect
+    datasource:
+        driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+        url: jdbc:log4jdbc:mysql://localhost:33060/DANG_DANG_US?autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+        username: dev
+        password: dbcpdlxkf12!
+
+data:
+    portal:
+        law-key: Hrct00FaffgzI6AL6hCaQfeTo1KsuEUlPsu4a7gIY5gSPLNhh+q0kzp021mLjSMV7rjHmpZ3sJWyvCYWe0t9rA==
