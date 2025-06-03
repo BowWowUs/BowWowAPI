@@ -38,8 +38,9 @@ public class SecurityConfig {
     private final CustomAccessDeniedHandler customAccessDeniedHandler;
 
     private final String[] PERMIT_URL = {
-        "/v1/user/sns/login",
-        "/v1/user/refresh",
+        "/api/v1/account/user/sns/login",
+        "/api/v1/account/user/refresh",
+        "/api/v1/admin/**",
     };
 
     private final String[] AUTHENTICATION_URL = {

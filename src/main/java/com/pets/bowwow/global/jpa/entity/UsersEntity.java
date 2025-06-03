@@ -9,7 +9,6 @@ import org.hibernate.annotations.Comment;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.google.auto.value.AutoValue.Builder;
 import com.pets.bowwow.global.base.BaseEntity;
 import com.pets.bowwow.global.jpa.constant.GenderCd;
 
@@ -24,6 +23,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

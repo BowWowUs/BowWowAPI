@@ -1,8 +1,7 @@
-server:
-    servlet:
-        context-path: /api
-
 spring:
+    batch:
+        job:
+            enabled: false
     jackson:
         default-property-inclusion: NON_NULL
     servlet:
@@ -16,7 +15,10 @@ logging:
     level:
         org.hibernate.SQL: debug
         org.hibernate.type: trace
-
+        
+public:
+    data:
+        api-key: nncudzgLg4qcJ5hIsIPMDizFbOefy2CdS6HALm8B+HEeymmgKZ6cI8w5c2qKnElE/2ZIYQf6EJUB0OF7d3c3AQ==
 # Firebase
 # firebase:
 #     name: safe

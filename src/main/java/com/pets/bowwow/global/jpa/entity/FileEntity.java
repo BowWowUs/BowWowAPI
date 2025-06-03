@@ -1,6 +1,5 @@
 package com.pets.bowwow.global.jpa.entity;
 
-import com.google.auto.value.AutoValue.Builder;
 import com.pets.bowwow.global.base.BaseEntity;
 
 import jakarta.persistence.Column;
@@ -10,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

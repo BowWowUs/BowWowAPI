@@ -6,7 +6,7 @@ spring:
         hibernate:       
             jdbc:
                 time_zone: Asia/Seoul     
-            ddl-auto: create
+            ddl-auto: none
             naming: 
                 implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
                 physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
