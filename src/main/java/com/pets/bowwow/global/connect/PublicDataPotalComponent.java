@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.service.annotation.GetExchange;
 import org.springframework.web.service.annotation.HttpExchange;
 
+import com.pets.bowwow.global.connect.model.AreaBasedModel;
 import com.pets.bowwow.global.connect.model.PublicDataPortalRS;
 import com.pets.bowwow.global.connect.model.ServiceCategoryModel;
 
@@ -22,6 +23,16 @@ interface PublicDataPotalComponent {
         @RequestParam(required = false) String cat1,
         @RequestParam(required = false) String cat2,
         @RequestParam(required = false) String cat3
+    );
+
+    @GetExchange("/areaBasedList")
+    ResponseEntity<PublicDataPortalRS<AreaBasedModel>> getAreaBasedList(
+        @RequestParam String serviceKey,
+        @RequestParam String MobileOS,
+        @RequestParam String MobileApp,
+        @RequestParam String _type,
+        @RequestParam Integer numOfRows,
+        @RequestParam Integer pageNo
     );
 
 }
