@@ -123,6 +123,9 @@ public class UserService {
         if(rq.getBio() != null && !rq.getBio().isBlank()){
             users.setBio(rq.getBio());
         }
+
+        
+
     }
 
     public TokenModel tokenRefresh(RefreshRQ rq) {

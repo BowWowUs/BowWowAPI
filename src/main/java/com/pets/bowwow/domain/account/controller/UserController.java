@@ -1,5 +1,6 @@
 package com.pets.bowwow.domain.account.controller;
 
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -33,7 +34,7 @@ public class UserController {
         return ResponseEntity.ok().body(result);
     }
 
-    @PutMapping
+    @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Void> updateUser(@Valid @RequestBody UpdateUserRQ rq){
 
         userService.updateUser(rq);

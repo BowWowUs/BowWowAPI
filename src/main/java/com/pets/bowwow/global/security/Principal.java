@@ -20,7 +20,7 @@ public class Principal {
 		if (principal instanceof UserDetails) {
 			username = ((UserDetails) principal).getUsername();
 		} else {
-			username = "anonymousUser";
+			username = null;
 		}
 		return username;
     }

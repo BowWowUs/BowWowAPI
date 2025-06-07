@@ -19,3 +19,7 @@ spring:
         url: jdbc:log4jdbc:mysql://localhost:33060/DANG_DANG_US?autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
         username: dev
         password: dbcpdlxkf12!
+
+app:
+    file:
+        path: /uploads/

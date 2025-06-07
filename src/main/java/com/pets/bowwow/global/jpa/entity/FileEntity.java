@@ -1,9 +1,12 @@
 package com.pets.bowwow.global.jpa.entity;
 
 import com.pets.bowwow.global.base.BaseEntity;
+import com.pets.bowwow.global.common.file.model.FileType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -40,8 +43,9 @@ public class FileEntity extends BaseEntity{
     @Column(name = "EXTENSION", nullable = false)
     private String extension;
 
-    @Column(name = "DESCRIPTION", nullable = false)
-    private String description;
+    @Column(name = "FILE_TYPE", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private FileType fileType;
 
     @Column(name = "FILE_SIZE", nullable = false)
     private Double fileSize;
