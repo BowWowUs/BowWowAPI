@@ -1,5 +1,6 @@
 package com.pets.bowwow.domain.batch.code.tasklet;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +52,10 @@ public class CodeTasklet implements Tasklet{
                 .build();
             
             code.setCreatedBy("BATCH_SYSTEM");
+            code.setCreatedAt(LocalDateTime.now());
             code.setUpdatedBy("BATCH_SYSTEM");
+            code.setUpdatedAt(LocalDateTime.now());
+            
             codeTaskletCompoent.add(codeEntities, code);
 
             add(item.getCode());

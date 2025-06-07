@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
 
+import com.pets.bowwow.domain.batch.company.tasklet.CompanyTasklet;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,6 +21,7 @@ public class CompanyJobConfig {
 
     private final JobRepository jobRepository;
     private final PlatformTransactionManager platformTransactionManager;
+    private final CompanyTasklet companyTasklet;
 
     @Bean
     public Job companyJob(){
@@ -31,13 +34,8 @@ public class CompanyJobConfig {
     @Bean
     public Step companyStep(){
         return new StepBuilder("COMPANY_STEP", jobRepository)
-            .tasklet((contribution ,chunkContext) -> {
-
-                log.info("ㅎㅇ");
-                return null;
-            }, platformTransactionManager)
+            .tasklet(companyTasklet, platformTransactionManager)
             .build();
     }
-
 
 }

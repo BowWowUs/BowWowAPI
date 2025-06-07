@@ -17,8 +17,8 @@ public class AreaBasedModel {
     private String firstimage;      // 대표 이미지
     private String firstimage2;     // 보조 이미지
     private String cpyrhtDivCd;     // 저작권 구분 코드
-    private String mapx;            // 경도
-    private String mapy;            // 위도
+    private Double mapx;            // 경도
+    private Double mapy;            // 위도
     private String mlevel;          // 지도 레벨
     private String modifiedtime;    // 수정 시간
     private String sigungucode;     // 시군구 코드
