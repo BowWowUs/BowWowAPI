@@ -8,6 +8,7 @@ public enum UserType{
     ADMIN("ADMIN", "관리자"),
     COMPANY("COMPANY", "사업자"),
     USER("USER", "개인"),
+    NO_AUTH_USER("NO_AUTH_USER", "개인"),
     
     ;
 

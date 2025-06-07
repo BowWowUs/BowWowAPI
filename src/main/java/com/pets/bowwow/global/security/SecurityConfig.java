@@ -18,6 +18,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import com.pets.bowwow.domain.account.model.UserType;
 import com.pets.bowwow.global.jpa.repository.UsersRepository;
 import com.pets.bowwow.global.security.custom.CustomAccessDeniedHandler;
 import com.pets.bowwow.global.security.custom.CustomAuthenticationEntryPointHandler;
@@ -43,6 +44,11 @@ public class SecurityConfig {
         "/api/v1/admin/**",
     };
 
+    private final String[] NO_AUTHENTICATION_URL = {
+        "/api/v1/account/user",
+        "/api/v1/account/user/refresh",
+    };
+
     private final String[] AUTHENTICATION_URL = {
         "/**"
     };
@@ -57,6 +63,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests -> {
                     authorizeRequests
                     .requestMatchers(PERMIT_URL).permitAll()
+                    .requestMatchers(NO_AUTHENTICATION_URL).hasAnyAuthority(UserType.NO_AUTH_USER.name(), UserType.USER.name())
                     .requestMatchers(AUTHENTICATION_URL).hasAnyAuthority("USER")
                     ;
                 })

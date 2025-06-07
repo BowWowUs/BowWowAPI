@@ -90,10 +90,11 @@ public class UserService {
         usersRepository.save(users);
 
         // Users의 권한 Authorities 테이블 Insert
+        // 초기 유저 권한은 NON AUTH_USER
         AuthoritiesEntity authorities = new AuthoritiesEntity();
         AuthorityId id = new AuthorityId();
         id.setUsername(username);
-        id.setAuthority(UserType.USER.getValue());
+        id.setAuthority(UserType.NO_AUTH_USER.getValue());
         authorities.setId(id);
 
         users.setAuthorities(authorities);
@@ -142,7 +143,6 @@ public class UserService {
             if(fileGroupNo == null && rq.getMainImage() != null){
                 throw new AppException(ExceptionCode.NON_VALID_PARAMETER, "메인 이미지 없이 서브이미지를 등록할 수 없습니다.");
             }
-
             fileGroupNo = fileService.saveFile(fileGroupNo, rq.getSubImages(), FileType.SUB);
 
             users.setFileGroupNo(fileGroupNo);
