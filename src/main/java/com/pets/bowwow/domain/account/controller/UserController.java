@@ -34,8 +34,8 @@ public class UserController {
         return ResponseEntity.ok().body(result);
     }
 
-    @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<Void> updateUser(@Valid @RequestBody UpdateUserRQ rq){
+    @PutMapping(produces =  MediaType.MULTIPART_FORM_DATA_VALUE, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Void> updateUser(@Valid UpdateUserRQ rq){
 
         userService.updateUser(rq);
 

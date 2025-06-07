@@ -66,9 +66,9 @@ public class UsersEntity extends BaseEntity implements UserDetails{
     @Comment("회원 활성화")
     private Boolean enabled;
 
-    @Column(name = "FILE_GROUP_NO", nullable = false)
+    @Column(name = "FILE_GROUP_NO")
     @Comment("파일 그룹번호")
-    private Integer fileGroupNo;
+    private Long fileGroupNo;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "USERNAME", referencedColumnName = "USERNAME")

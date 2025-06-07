@@ -1,6 +1,7 @@
 package com.pets.bowwow.domain.account.service;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Optional;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -13,6 +14,8 @@ import com.pets.bowwow.domain.account.model.PlatformConstant;
 import com.pets.bowwow.domain.account.model.RefreshRQ;
 import com.pets.bowwow.domain.account.model.UpdateUserRQ;
 import com.pets.bowwow.domain.account.model.UserType;
+import com.pets.bowwow.global.common.file.model.FileType;
+import com.pets.bowwow.global.common.file.service.FileService;
 import com.pets.bowwow.global.exception.AppException;
 import com.pets.bowwow.global.exception.ExceptionCode;
 import com.pets.bowwow.global.jpa.entity.AuthoritiesEntity;
@@ -31,6 +34,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class UserService {
 
+    private final FileService fileService;
     private final UsersRepository usersRepository;
     private final JwtTokenProvider jwtTokenProvider;
     private final PasswordEncoder passwordEncoder;
@@ -124,8 +128,25 @@ public class UserService {
             users.setBio(rq.getBio());
         }
 
-        
+        if(rq.getMainImage() != null){
+            Long fileGroupNo = users.getFileGroupNo();
+            fileGroupNo = fileService.saveFile(fileGroupNo, Arrays.asList(rq.getMainImage()), FileType.MAIN);
 
+            users.setFileGroupNo(fileGroupNo);
+        }
+
+        if(rq.getSubImages() != null && !rq.getSubImages().isEmpty()){
+            Long fileGroupNo = users.getFileGroupNo();
+
+            // 기존에 등록된 사진이 없는데 메인 이미지까지 등록하지 않은경우, 서브이미지 등록불가
+            if(fileGroupNo == null && rq.getMainImage() != null){
+                throw new AppException(ExceptionCode.NON_VALID_PARAMETER, "메인 이미지 없이 서브이미지를 등록할 수 없습니다.");
+            }
+
+            fileGroupNo = fileService.saveFile(fileGroupNo, rq.getSubImages(), FileType.SUB);
+
+            users.setFileGroupNo(fileGroupNo);
+        }
     }
 
     public TokenModel tokenRefresh(RefreshRQ rq) {

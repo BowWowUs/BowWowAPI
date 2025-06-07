@@ -79,8 +79,16 @@ public class FileService {
 
         List<FileEntity> comFileBas = new ArrayList<>();
 
+        if(fileGroupNo == null){
+            fileGroupNo = this.lastFileGroupNo();
+        }
+
         for(MultipartFile file : multipartFiles){
             FileEntity node = this.fileUpload(file, fileUrl, fileGroupNo, fileType);
+            node.setCreatedBy(Principal.getUser());
+            node.setCreatedAt(LocalDateTime.now());
+            node.setUpdatedBy(Principal.getUser());
+            node.setUpdatedAt(LocalDateTime.now());
             comFileBas.add(node);
         }
 
